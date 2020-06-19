@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,12 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function follows(){
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
-    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -51,13 +46,6 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
-    /**
-     * @param User $user
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function follow(User $user){
-        return $this->follows()->save($user);
-    }
 
     /**
      * gets the logged in users time line
@@ -76,8 +64,6 @@ class User extends Authenticatable
             ->get();
     }
 
-
-
     /**
      * gets the users avatar
      * @return string
@@ -90,6 +76,5 @@ class User extends Authenticatable
     {
         return 'name';
     }
-
 
 }

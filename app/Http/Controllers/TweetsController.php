@@ -37,6 +37,6 @@ class TweetsController extends Controller
             'body' => $request->get('body')
         ]);
 
-        return redirect(route('home'));
+        return redirect()->route('home');
     }
 }
