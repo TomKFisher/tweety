@@ -1,3 +1,4 @@
+@if(current_user()->isNot($user))
 <form method="POST" action="/profiles/{{$user->name}}/follow">
     @csrf
     <button
@@ -7,3 +8,4 @@
         {{ auth()->user()->following($user) ? 'Unfollow Me!' : 'Follow me!'}}
     </button>
 </form>
+@endif

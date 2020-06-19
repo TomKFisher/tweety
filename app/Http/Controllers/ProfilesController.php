@@ -12,9 +12,16 @@ class ProfilesController extends Controller
 
         $tweets = $user->tweets()->latest()->get();
 
-      return view('profiles.show',[
-          'user'=> $user,
-          'tweets'=> $tweets
-      ]);
+        return view('profiles.show', [
+            'user' => $user,
+            'tweets' => $tweets
+        ]);
+    }
+
+    public function edit(User $user)
+    {
+        return view('profiles.edit', [
+            'user' => $user
+        ]);
     }
 }

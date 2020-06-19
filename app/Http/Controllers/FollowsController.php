@@ -15,4 +15,6 @@ class FollowsController extends Controller
         return back();
 
     }
+
+
 }
