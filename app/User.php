@@ -64,14 +64,22 @@ class User extends Authenticatable
             ->get();
     }
 
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     /**
      * gets the users avatar
      * @return string
      */
     public function getAvatarAttribute($value)
     {
-//        dd(asset($value));
-        return asset('storage/'.$value);
+        if(is_file('storage/'.$value)){
+            return asset('storage/'.$value);
+        }
+
+        return asset('/images/default-avatar.jpeg');
     }
 
     public function path($append = '')

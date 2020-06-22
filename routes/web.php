@@ -18,13 +18,16 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('auth')->group( function (){
+Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetsController@index')->name('home');
     Route::post('/tweets', 'TweetsController@store')->name('tweet.store');
     Route::post('/profiles/{user:username}/follow', 'FollowsController@store')->name('follow');
     Route::get('/profiles/{user:username}/edit', 'profilesController@edit')->middleware('can:edit,user');
     Route::patch('/profiles/{user:username}', 'profilesController@update')->middleware('can:edit,user');
+
+    Route::get('/explore', 'ExploreController@index');
 });
+
 
 Route::get('/profiles/{user:username}', 'profilesController@show')->name('profile');
 
