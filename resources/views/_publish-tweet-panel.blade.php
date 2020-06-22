@@ -6,12 +6,14 @@
             id="body"
             class="w-full"
             placeholder="What up?!"
+            required
+            autofocus
         >
         </textarea>
 
         <hr class="my-4">
 
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
             <img
                 src="{{auth()->user()->avatar}}"
                 alt="idk"
@@ -20,7 +22,7 @@
                 height="50"
             >
 
-            <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white">
                 Tweet it!
             </button>
         </footer>

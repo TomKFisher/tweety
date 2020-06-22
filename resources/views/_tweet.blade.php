@@ -20,9 +20,11 @@
         </h5>
 
 
-        <p class="text-sm">
+        <p class="text-sm mb-3">
             {{$tweet->body}}
         </p>
+
+        <x-like-button :tweet="$tweet"> </x-like-button>
     </div>
 </div>
 
