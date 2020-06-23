@@ -1,7 +1,7 @@
 <x-master>
-
     <section class="px-8">
         <main class="container mx-auto">
+            <x-flash-msg></x-flash-msg>
             <div class="lg:flex lg:justify-between">
                 @if(auth()->check())
                     <div class="lg:w-32">

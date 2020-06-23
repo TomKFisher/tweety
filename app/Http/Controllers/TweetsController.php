@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TweetsController extends Controller
 {
@@ -37,6 +38,13 @@ class TweetsController extends Controller
             'body' => $request->get('body')
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success','Tweet Created.');
+    }
+
+    public function destroy(Tweet $tweet)
+    {
+        $tweet->delete();
+
+        return Redirect::back()->with('success','Tweet deleted.');
     }
 }

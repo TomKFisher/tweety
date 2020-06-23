@@ -42,6 +42,6 @@ class ProfilesController extends Controller
 
         $user->update($attributes);
 
-        return redirect($user->path());
+        return redirect($user->path())->with('success','Information Updated.');
     }
 }

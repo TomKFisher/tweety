@@ -49715,6 +49715,23 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+console.log(1);
+var len = $(this).val().length;
+$('#tweetBody').keyup(function () {
+  var max = 255;
+  var len = $(this).val().length;
+
+  if (len >= max) {
+    console.log(len);
+    $('#charNum').text(' you have reached the limit');
+  } else {
+    console.log(len);
+
+    var _char = max - len;
+
+    $('#charNum').text(_char + ' characters left');
+  }
+});
 
 /***/ }),
 

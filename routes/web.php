@@ -21,9 +21,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetsController@index')->name('home');
     Route::post('/tweets', 'TweetsController@store')->name('tweet.store');
-
+    Route::delete('/tweets/{tweet}', 'TweetsController@destroy')->middleware('can:edit,tweet')->name('tweet.destroy');
     Route::post('/tweets/{tweet}/like', 'TweetLikesController@store');
     Route::delete('/tweets/{tweet}/like', 'TweetLikesController@destroy');
+
 
     Route::post('/profiles/{user:username}/follow', 'FollowsController@store')->name('follow');
     Route::get('/profiles/{user:username}/edit', 'profilesController@edit')->middleware('can:edit,user');

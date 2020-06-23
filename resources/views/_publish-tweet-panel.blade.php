@@ -2,14 +2,18 @@
     <form action="{{route('tweet.store')}}" method="POST">
         @csrf
         <textarea
+            v-model="text"
+            :id="tweetBody"
+            :name="body"
             name="body"
-            id="body"
+            id="tweetBody"
             class="w-full"
             placeholder="What up?!"
             required
             autofocus
         >
         </textarea>
+        <p id="charNum"></p>
 
         <hr class="my-4">
 
@@ -22,6 +26,7 @@
                 height="50"
             >
 
+
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white">
                 Tweet it!
             </button>
@@ -32,3 +37,4 @@
 
     </form>
 </div>
+

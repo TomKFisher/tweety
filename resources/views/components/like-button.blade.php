@@ -22,7 +22,7 @@
         @csrf
         @method('DELETE')
         <div
-            class="flex items-center {{$tweet->isDislikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500'}}">
+            class="flex items-center {{$tweet->isDislikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500'}} mr-3">
             <svg viewBox="0 0 20 20" class="mr-1 w-4">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g class="fill-current">
@@ -36,4 +36,31 @@
             <button type="submit" class="text-xs text-gray-500">{{ $tweet->dislikes ?: 0 }}</button>
         </div>
     </form>
+
+
+    @if(current_user()->is($tweet->user))
+        <form method="POST" action="{{ route('tweet.destroy', $tweet) }}">
+            @csrf
+            @method('DELETE')
+{{--            <label class="text-gray-500 hover:bg-blue-600">--}}
+{{--            <input type="submit" name="image" style="display: none">--}}
+            <button >
+            <svg viewBox="0 0 20 20" class="mr-1 w-4">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g class="fill-current text-gray-500 hover:bg-blue-600">
+                        <path d="M2,2 L18,2 L18,4 L2,4 L2,2 Z M8,0 L12,0 L14,2 L6,2 L8,0 Z M3,6 L17,6 L16,20 L4,20 L3,6 Z M8,8 L9,8 L9,18 L8,18 L8,8 Z M11,8 L12,8 L12,18 L11,18 L11,8 Z" id="Combined-Shape"></path>
+
+                    </g>
+                </g>
+            </svg>
+            </button>
+{{--            </label>--}}
+{{--            <button--}}
+{{--                type="submit"--}}
+{{--                class="bg-blue-500 rounded-full shadow py-2 px-4 text-white text-xs"--}}
+{{--            >--}}
+{{--                {{ auth()->user()->following($user) ? 'Unfollow Me!' : 'Follow me!'}}--}}
+{{--            </button>--}}
+        </form>
+    @endif
 </div>

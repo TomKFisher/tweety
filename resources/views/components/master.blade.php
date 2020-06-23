@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="http://code.jquery.com/jquery-1.5.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,6 +33,6 @@
     {{ $slot }}
 
 </div>
-<script src="https://unpkg.com/turbolinks"></script>
+{{--<script src="https://unpkg.com/turbolinks"></script>--}}
 </body>
 </html>
